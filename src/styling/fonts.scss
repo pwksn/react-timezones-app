@@ -1,0 +1,24 @@
+@mixin heading-font {
+    font-weight: 500;
+    color: red;
+}
+
+.f-weight-xs {
+    font-weight: 300;
+}
+
+.f-weight-s {
+    font-weight: 400;
+}
+
+.f-weight-m {
+    font-weight: 500;
+}
+
+.f-weight-l {
+    font-weight: 600;
+}
+
+.f-weight-xl {
+    font-weight: 700;
+}
