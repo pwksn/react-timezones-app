@@ -1,7 +1,6 @@
-@mixin heading-font {
-    font-weight: 500;
-    color: red;
-}
+@import './colors.scss';
+
+// Font weight 
 
 .f-weight-xs {
     font-weight: 300;
@@ -21,4 +20,58 @@
 
 .f-weight-xl {
     font-weight: 700;
+}
+
+// Font size
+
+.f-header-big {
+    font-size: 3rem;
+}
+
+.f-text-m {
+    font-size: 1.5rem;
+}
+
+.f-text-l {
+    font-size: 1.8rem;
+}
+
+.f-text-xl {
+    font-size: 2rem;
+}
+
+// Font colors 
+
+.f-color-powder {
+    color: $color-powder;
+}
+
+.f-color-blue {
+    color: $color-blue;
+}
+
+.f-color-black {
+    color: $color-black;
+}
+
+.f-color-white {
+    color: $color-white;
+}
+
+.f-color-green {
+    color: $color-green;
+}
+
+.f-color-gray-dark {
+    color: $color-gray-dark;
+}
+
+.f-color-gray-light {
+    color: $color-gray-light;
+}
+
+// Icons 
+
+.icon-l {
+    font-size: 3rem;
 }

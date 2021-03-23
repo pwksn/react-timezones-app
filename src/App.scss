@@ -2,6 +2,7 @@
 @import './styling/fonts.scss';
 @import './styling/colors.scss';
 @import './styling/positioning.scss';
+@import './styling/elements.scss';
 
 
 .App {
@@ -17,6 +18,18 @@
   background-color: $color-white;
   border-radius: 1rem;
   padding: 1rem;
+}
+
+.app-dashboard {
+  padding: 1rem;
+}
+
+.dashboard-header-box div div button{
+  margin-right: 1rem;
+}
+
+.dashboard-header-box div div ion-icon{
+  color: $color-gray-dark;
 }
 
 

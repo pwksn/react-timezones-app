@@ -2,7 +2,7 @@ import DashboardHeader from "./DashboardHeader"
 
 const Dashboard = () => {
     return (
-        <div>
+        <div className="app-dashboard">
             <DashboardHeader />
         </div>
     );
