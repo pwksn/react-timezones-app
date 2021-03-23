@@ -1,8 +1,6 @@
 import BtnIcon from "../Components/BtnIcon";
 
-const DashboardHeader = () => {
-
-    const name = 'Mario';
+const DashboardHeader = ({ userData }) => {
 
     const handleSearchBtn = () => {
         console.log('btn clicked!');
@@ -11,7 +9,7 @@ const DashboardHeader = () => {
     return (
         <div className="dashboard-header-box">
             <div className="d-flex d-flex__spacebetween">
-                <h1 className="f-weight-m f-header-big" style={{margin: "1rem 0"}}>Hey <span className="f-weight-xl">{name}</span> &#128075;</h1>
+                <h1 className="f-weight-m f-header-big" style={{margin: "1rem 0"}}>Hey <span className="f-weight-xl">{userData.name}</span> &#128075;</h1>
                 <div>
                     <BtnIcon btnClassName="button--circle__l" iconName="search-outline" iconClass="icon-l" handleClick={handleSearchBtn}/>
                     <BtnIcon btnClassName="button--circle__l" iconName="notifications-outline" iconClass="icon-l"/>
