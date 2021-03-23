@@ -19,3 +19,68 @@
         }
     }
 }
+
+.timezone-tile {
+    background-color: $color-powder;
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    margin: 1rem 0;
+
+    &__header {
+
+    }
+
+    &__zone {
+
+        & > p {
+            color: $color-gray-dark;
+        }
+    }
+
+    &__people {
+        & > div h4 span {
+            color: $color-gray-dark;
+        }
+
+        & > div button {
+            color: $color-gray-dark;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+    }
+}
+
+.person-icon {
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    display: inline-block;
+
+    & > img { 
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        object-fit: cover;
+    }
+
+    &__indicator {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        border: 2px solid $color-powder;
+        background-color: $color-black;
+        top: 0;
+        right: 0;
+        position: absolute;
+
+        &--online {
+            background-color: $color-green;
+        }
+
+        &--offline {
+            background-color: $color-gray-dark;
+        }
+    }
+}

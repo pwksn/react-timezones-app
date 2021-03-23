@@ -15,12 +15,12 @@ const DashboardHeader = () => {
                 <div>
                     <BtnIcon btnClassName="button--circle__l" iconName="search-outline" iconClass="icon-l" handleClick={handleSearchBtn}/>
                     <BtnIcon btnClassName="button--circle__l" iconName="notifications-outline" iconClass="icon-l"/>
-                    <BtnIcon btnClassName="button--circle__l" iconName="cog-outline" iconClass="icon-l"/>
+                    <BtnIcon btnClassName="button--circle__l" iconName="options-outline" iconClass="icon-l"/>
                 </div>
             </div>
             <div>
                 <p className="f-text-l f-weight-m f-color-gray-dark m-0">Your actual timezone:</p>
-                <h4 className="f-text-l f-weight-l m-0">BST (UTC+1) | <span className="f-weight-xl">06:21 PM</span></h4>
+                <h3 className="f-text-l f-weight-l m-0">BST (UTC+1) | <ion-icon name="time-outline"></ion-icon> <span className="f-weight-xl">06:21 PM</span></h3>
             </div>
         </div>
     );

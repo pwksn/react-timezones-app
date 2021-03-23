@@ -10,18 +10,45 @@
   background-color: $color-powder;
   width: 100vw;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .app-content {
   min-width: 50%;
-  min-height: 80%;
+  height: 80%;
   background-color: $color-white;
   border-radius: 1rem;
   padding: 1rem;
+  // padding-bottom: 0;
 }
 
 .app-dashboard {
   padding: 1rem;
+  // max-height: calc(100% - 1rem);
+  // overflow-y: auto;
+  padding-bottom: 0;
+  height: calc(100% - 2rem);
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+.tiles {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.dashboard-header-box {
+  margin-bottom: 2rem;
+  height: min-content;
+}
+
+.dashboard-header-box div h3 {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-header-box div h3 ion-icon {
+  margin: 0 .5rem;
 }
 
 .dashboard-header-box div div button{
