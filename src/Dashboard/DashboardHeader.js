@@ -1,6 +1,7 @@
+import { useState } from "react";
 import BtnIcon from "../Components/BtnIcon";
 
-const DashboardHeader = ({ userData }) => {
+const DashboardHeader = ({ userData, timeNow }) => {
 
     const handleSearchBtn = () => {
         console.log('btn clicked!');
@@ -18,7 +19,7 @@ const DashboardHeader = ({ userData }) => {
             </div>
             <div>
                 <p className="f-text-l f-weight-m f-color-gray-dark m-0">Your actual timezone:</p>
-                <h3 className="f-text-l f-weight-l m-0">BST (UTC+1) | <ion-icon name="time-outline"></ion-icon> <span className="f-weight-xl">06:21 PM</span></h3>
+                <h3 className="f-text-l f-weight-l m-0">BST (UTC+1) | <ion-icon name="time-outline"></ion-icon> <span className="f-weight-xl">{timeNow}</span></h3>
             </div>
         </div>
     );
