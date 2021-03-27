@@ -13,12 +13,20 @@
             "1": {
                 "timezone": "PDT (UTC -7)",
                 "timezoneId": 1,
-                "city": "America/Los_Angeles"
+                "timezoneCity": "America/Los_Angeles",
+                "city": "Los Angeles, CA, USA"
             },
             "2": {
                 "timezone": "BST (UTC +1)",
                 "timezoneId": 2,
-                "city": "Europe/London"
+                "timezoneCity": "Europe/London",
+                "city": "Manchester, UK"
+            },
+            "3": {
+                "timezone": "BST (UTC +1)",
+                "timezoneId": 3,
+                "timezoneCity": "Asia/Singapore",
+                "city": "Singapore"
             }
         },
         "contacts": {

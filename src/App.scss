@@ -53,6 +53,10 @@
 
 .dashboard-header-box div div button{
   margin-right: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dashboard-header-box div div ion-icon{
