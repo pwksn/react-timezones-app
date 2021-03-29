@@ -10,19 +10,19 @@
             "photoImg": "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=644&q=80"
         },
         "timezones": {
-            "1": {
+            "0": {
                 "timezone": "PDT (UTC -7)",
                 "timezoneId": 1,
                 "timezoneCity": "America/Los_Angeles",
                 "city": "Los Angeles, CA, USA"
             },
-            "2": {
+            "1": {
                 "timezone": "BST (UTC +1)",
                 "timezoneId": 2,
                 "timezoneCity": "Europe/London",
                 "city": "Manchester, UK"
             },
-            "3": {
+            "2": {
                 "timezone": "BST (UTC +1)",
                 "timezoneId": 3,
                 "timezoneCity": "Asia/Singapore",
@@ -50,12 +50,12 @@
             "photoImg": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
         },
         "timezones": {
-            "1": {
+            "0": {
                 "timezone": "PDT (UTC -7)",
                 "timezoneId": 1,
                 "city": "America/Los_Angeles"
             },
-            "2": {
+            "1": {
                 "timezone": "BST (UTC +1)",
                 "timezoneId": 2,
                 "city": "Europe/London"

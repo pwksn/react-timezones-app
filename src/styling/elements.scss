@@ -1,5 +1,18 @@
 @import './colors.scss';
 
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .button--circle {
     &__l {
         width: 5rem;
@@ -16,6 +29,55 @@
         
         & > * {
             color: $color-gray-light;
+        }
+    }
+}
+
+.btn {
+
+    &__medium {
+        width: 20%;
+        height: 4rem;
+        font-size: 1.5rem;
+        font-family: inherit;
+        font-weight: 600;
+        border-radius: 1rem;
+        min-width: 7rem;
+
+        &--primary {
+            background-color: $color-powder;
+            border: 2px solid $color-powder-dark;
+        }
+
+        &--primary:hover {
+            background-color: $color-powder-dark;
+        }
+
+        &--secondary {
+            background-color: $color-gray-light;
+            border: 2px solid $color-gray-dark;
+        }
+
+        &--secondary:hover {
+            background-color: $color-gray-dark;
+        }
+    }
+
+    &__large {
+        width: 80%;
+        height: 4rem;
+        font-size: 1.5rem;
+        font-family: inherit;
+        font-weight: 600;
+        border-radius: 1rem;
+
+        &--primary {
+            background-color: $color-powder;
+            border: 2px solid $color-powder-dark;
+        }
+
+        &--primary:hover {
+            background-color: $color-powder-dark;
         }
     }
 }

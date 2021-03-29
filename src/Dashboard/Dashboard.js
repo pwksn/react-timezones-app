@@ -6,7 +6,7 @@ import spacetime from 'spacetime';
 
 const Dashboard = () => {
 
-    const {data, isPending, error} = useFetch('http://localhost:8000/123');
+    const {data, isPending, error} = useFetch('https://react-timezones-app-default-rtdb.firebaseio.com/123.json');
     const [timeNow, setTimeNow] = useState(spacetime.now().time()); 
 
     const d = spacetime.now();
@@ -18,7 +18,7 @@ const Dashboard = () => {
         //     userTimezones = Object.values(data.timezones);
         // }
         // console.log(data);
-        console.log(data?.timezones);
+        console.log(data);
     }, [data]);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="app-dashboard">
+        <div className="app__dashboard">
             {data && <DashboardHeader userData={data.user} timeNow={d.time()} offset={d.offset()}/>}
             {data && <div className="tiles">
                 {Object.values(data.timezones).map((timezone) => (
