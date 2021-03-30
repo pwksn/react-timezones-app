@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { timezones } from '../data/timezones';
 
 const TimezoneForm = () => {
 
-    const [timezoneCity, setTimezoneCity] = useState('America/Sao_Paulo');
+    const [timezoneCity, setTimezoneCity] = useState(timezones[0]);
     const [city, setCity] = useState('');
     const [isPending, setIsPending] = useState(false);
 
@@ -34,6 +35,10 @@ const TimezoneForm = () => {
         history.push('/');
     }
 
+    const convertTimezoneToText = (timezoneName) => {
+        return timezoneName.replace(/_/g, ' ');
+    }
+
     return (
         <div className="app__timezone-form d-flex d-flex__center d-flex__column">
             <h1 className="m-bottom-xl f-header-l">Add new timezone</h1>
@@ -53,9 +58,17 @@ const TimezoneForm = () => {
                         value={timezoneCity}
                         onChange={(e) => setTimezoneCity(e.target.value)}>
                         {/* toDo: add some more timezones */}
-                        <option value="America/Sao_Paulo">America/Sao Paulo (UTC -3)</option>
-                        <option value="Europe/Warsaw">Europe/Warsaw (UTC -1)</option>
+                        {/* <option value="America/Sao_Paulo">America/Sao Paulo (UTC -3)</option>
+                        <option value="America/Los_Angeles">America/Los Angeles (UTC -8)</option>
                         <option value="Asia/Dubai">Asia/Dubai (UTC +4)</option>
+                        <option value="Europe/Warsaw">Europe/Warsaw (UTC -1)</option> */}
+                        {timezones.sort((a, b) => {
+                            if (a < b) {return -1;}
+                            if (a > b) {return 1;}
+                            return 0;
+                        }).map(timezone => {
+                            return <option value={timezone}>{convertTimezoneToText(timezone)}</option>
+                        })}
                     </select>
                 </div>
 

@@ -23,7 +23,10 @@ const TimezoneTile = ({ timezone }) => {
         } else {
             return 'UTC ' + offset;
         }
+    }
 
+    const convertTimezoneName = (timezoneName) => {
+        return timezoneName.replace(/_/g, ' ');
     }
 
     return (
@@ -34,7 +37,7 @@ const TimezoneTile = ({ timezone }) => {
             </div>
             <div className="timezone-tile__zone m-m">
                 <h3 className="f-text-l f-weight-xl m-0">{timezone.city}</h3>
-                <p className="f-text-m f-weight-l m-0">{calculateOffset(timezone.timezoneCity)}</p>
+                <p className="f-text-m f-weight-l m-0">{convertTimezoneName(timezone.timezoneCity)} ({calculateOffset(timezone.timezoneCity)})</p>
             </div>
             <div className="timezone-tile__people m-l" style={{marginBottom: 0}}>
                 <div className="d-flex d-flex__spacebetween">

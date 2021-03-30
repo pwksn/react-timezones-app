@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
         <div className="app__dashboard">
             {data && <DashboardHeader userData={data.user} timeNow={d.time()} offset={d.offset()}/>}
-            {data && <div className="tiles">
+            {data && data.timezones && <div className="tiles">
                 {Object.values(data.timezones).map((timezone) => (
                     <TimezoneTile key={timezone.timezoneId} timezone={timezone}/>
                 ))}
