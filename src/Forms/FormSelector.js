@@ -7,7 +7,10 @@ const FormSelector = () => {
                 <span>Add timezone</span>
             </Link>
             {/* <button className="btn__large btn__large--primary m-l">Add timezone</button> */}
-            <button className="btn__large btn__large--primary m-l m-bottom-xl">Add new person</button>
+            {/* <button className="btn__large btn__large--primary m-l m-bottom-xl">Add new person</button> */}
+            <Link to="/form/person" className="btn__large btn__large--primary m-l">
+                <span>Add person</span>
+            </Link>
             <Link to="/" className="btn__medium btn__medium--secondary m-top-xl">
                 <span>Cancel</span>
             </Link>

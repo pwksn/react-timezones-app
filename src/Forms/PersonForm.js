@@ -1,33 +1,28 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import { timezones } from '../data/timezones';
+import { useHistory } from 'react-router-dom';
 
-const TimezoneForm = () => {
+const PersonForm = ({ timezones }) => {
 
-    const [timezoneCity, setTimezoneCity] = useState(timezones[0]);
-    const [city, setCity] = useState('');
+    const [personName, setPersonName] = useState('');
+    const [personPhotoUrl, setPersonPhotoUrl] = useState('');
+    const [personTimezone, setPersonTimezone] = useState(timezones[0]);
     const [isPending, setIsPending] = useState(false);
-
-    const uid = 123;
 
     const history = useHistory();
 
+    useEffect(() => {
+        console.log(timezones);
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newTimezone = { city, timezoneCity };
-        const cityFormatted = city.replace(/\s+/g, '_'); // eg. Sao Paulo -> Sao_Paulo to use in URL
-        console.log(newTimezone);
+        const newPerson = {personName, personPhotoUrl, personTimezone};
+        console.log(newPerson);
+    }
 
-        setIsPending(true);
-
-        fetch(`https://react-timezones-app-default-rtdb.firebaseio.com/123/timezones/${cityFormatted}.json`, {
-            method: 'PUT',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newTimezone) // convert object to JSON string
-        }).then(() => {
-            setIsPending(false);
-            history.push('/');
-        })
+    const convertTimezoneToText = (timezoneName) => {
+        return timezoneName.replace(/_/g, ' ');
     }
 
     const onFormCancel = (e) => {
@@ -35,34 +30,35 @@ const TimezoneForm = () => {
         history.push('/');
     }
 
-    const convertTimezoneToText = (timezoneName) => {
-        return timezoneName.replace(/_/g, ' ');
-    }
-
     return (
         <div className="app__timezone-form d-flex d-flex__center d-flex__column">
-            <h1 className="m-bottom-xl f-header-l">Add new timezone</h1>
+            <h1 className="m-bottom-xl f-header-l">Add new person</h1>
             <form onSubmit={handleSubmit} className="d-flex d-flex__center d-flex__column">
                 <div className="d-flex d-flex__column m-bottom-l">
-                    <label>City</label>
+                    <label>Name</label>
                     <input
                         required
                         type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}/>
+                        value={personName}
+                        onChange={(e) => setPersonName(e.target.value)}/>
+                </div>
+
+                <div className="d-flex d-flex__column m-bottom-l">
+                    <label>Photo URL</label>
+                    <input
+                        required
+                        type="text"
+                        value={personPhotoUrl}
+                        onChange={(e) => setPersonPhotoUrl(e.target.value)}/>
                 </div>
 
                 <div className="d-flex d-flex__column m-bottom-xl">
                     <label>Timezone</label>
                     <select 
-                        value={timezoneCity}
-                        onChange={(e) => setTimezoneCity(e.target.value)}>
-                        {timezones.sort((a, b) => {
-                            if (a < b) {return -1;}
-                            if (a > b) {return 1;}
-                            return 0;
-                        }).map(timezone => {
-                            return <option value={timezone}>{convertTimezoneToText(timezone)}</option>
+                        value={personTimezone}
+                        onChange={(e) => setPersonTimezone(e.target.value)}>
+                        {Object.values(timezones).map((timezone, index) => {
+                            return <option value={timezone.city} key={index}>{timezone.city}</option>
                         })}
                     </select>
                 </div>
@@ -93,4 +89,4 @@ const TimezoneForm = () => {
     );
 }
  
-export default TimezoneForm;
+export default PersonForm;
