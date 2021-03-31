@@ -16,7 +16,8 @@ function App() {
         <div className="app-content">
           <Switch>
             <Route exact path="/">
-              {data && <Dashboard data={data}/>}
+              {/* {data && <Dashboard data={data}/>} */}
+              <Dashboard />
             </Route>
             <Route path="/form/select">
               <FormSelector />

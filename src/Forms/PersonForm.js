@@ -18,7 +18,19 @@ const PersonForm = ({ timezones }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newPerson = {personName, personPhotoUrl, personTimezone};
-        console.log(newPerson);
+        const cityFormatted = personTimezone.replace(/\s+/g, '_'); // eg. Sao Paulo -> Sao_Paulo to use in URL
+        const nameFormatted = personName.replace(/\s+/g, '_'); 
+
+        setIsPending(true);
+
+        fetch(`https://react-timezones-app-default-rtdb.firebaseio.com/123/timezones/${cityFormatted}/people/${nameFormatted}.json`, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newPerson) // convert object to JSON string
+        }).then(() => {
+            setIsPending(false);
+            history.push('/');
+        })
     }
 
     const convertTimezoneToText = (timezoneName) => {

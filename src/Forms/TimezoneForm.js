@@ -61,8 +61,8 @@ const TimezoneForm = () => {
                             if (a < b) {return -1;}
                             if (a > b) {return 1;}
                             return 0;
-                        }).map(timezone => {
-                            return <option value={timezone}>{convertTimezoneToText(timezone)}</option>
+                        }).map((timezone, index) => {
+                            return <option value={timezone} key={index}>{convertTimezoneToText(timezone)}</option>
                         })}
                     </select>
                 </div>

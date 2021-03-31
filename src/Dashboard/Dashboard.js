@@ -4,9 +4,9 @@ import useFetch from '../hooks/useFetch';
 import { useEffect, useState } from "react";
 import spacetime from 'spacetime';
 
-const Dashboard = ({ data }) => {
+const Dashboard = () => {
 
-    // const {data, isPending, error} = useFetch('https://react-timezones-app-default-rtdb.firebaseio.com/123.json');
+    const {data, isPending, error} = useFetch('https://react-timezones-app-default-rtdb.firebaseio.com/123.json');
     const [timeNow, setTimeNow] = useState(spacetime.now().time()); 
 
     const d = spacetime.now();
