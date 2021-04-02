@@ -3,6 +3,7 @@ import DashboardHeader from "./DashboardHeader"
 import useFetch from '../hooks/useFetch';
 import { useEffect, useState } from "react";
 import spacetime from 'spacetime';
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const Dashboard = () => {
 
@@ -46,6 +47,9 @@ const Dashboard = () => {
                 {timezones.map((timezone, index) => (
                     <TimezoneTile key={index} timezone={timezone} onTimezoneDelete={onTimezoneDelete}/>
                 ))}
+            </div>}
+            {isPending && <div style={{width: '100%', height: '100%', gridRow: '2/3'}} className="d-flex d-flex__center" >
+                <LoadingSpinner />    
             </div>}
         </div>
     );
