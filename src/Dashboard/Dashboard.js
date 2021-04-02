@@ -8,17 +8,15 @@ const Dashboard = () => {
 
     const {data, isPending, error} = useFetch('https://react-timezones-app-default-rtdb.firebaseio.com/123.json');
     const [timeNow, setTimeNow] = useState(spacetime.now().time()); 
+    const [timezones, setTimezones] = useState(null);
 
     const d = spacetime.now();
 
     useEffect(() => {
-        // console.log(data?.user);
-        // toDo: check useRef warning 
-        // if (data && data.timezones) {
-        //     userTimezones = Object.values(data.timezones);
-        // }
-        // console.log(data);
-        console.log(data);
+        if (data && data.timezones) {
+            setTimezones(Object.values(data.timezones));
+            console.log(timezones);
+        }
     }, [data]);
 
     useEffect(() => {
@@ -29,12 +27,24 @@ const Dashboard = () => {
         return () => clearInterval(timer);
     }, []);
 
+    const onTimezoneDelete = (timezoneName) => {
+        const timezoneNameFormatted = timezoneName.replace(/\s+/g, '_'); // eg. Sao Paulo -> Sao_Paulo to use in URL
+        fetch('https://react-timezones-app-default-rtdb.firebaseio.com/123/timezones/' + timezoneNameFormatted + '.json', {
+            method: 'DELETE'
+        }).then(() => {
+            const newTimezones = timezones.filter(timezone => (
+                timezone.city !== timezoneName
+            ));
+            setTimezones(newTimezones);
+        })
+    }
+
     return (
         <div className="app__dashboard">
             {data && <DashboardHeader userData={data.user} timeNow={d.time()} offset={d.offset()}/>}
-            {data && data.timezones && <div className="tiles">
-                {Object.values(data.timezones).map((timezone, index) => (
-                    <TimezoneTile key={index} timezone={timezone}/>
+            {timezones && <div className="tiles">
+                {timezones.map((timezone, index) => (
+                    <TimezoneTile key={index} timezone={timezone} onTimezoneDelete={onTimezoneDelete}/>
                 ))}
             </div>}
         </div>

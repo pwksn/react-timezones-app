@@ -3,7 +3,7 @@ import TimezoneTilePerson from "./TimezoneTilePerson"
 import spacetime from 'spacetime';
 import { useEffect } from "react";
 
-const TimezoneTile = ({ timezone }) => {
+const TimezoneTile = ({ timezone, onTimezoneDelete }) => {
 
     const d = spacetime.now();
 
@@ -36,7 +36,7 @@ const TimezoneTile = ({ timezone }) => {
         <div className="timezone-tile">
             <div className="timezone-tile__header d-flex d-flex__spacebetween">
                 <h1 className="f-header-big f-weight-m" style={{margin: 0}}>{calculateHour(timezone.timezoneCity)}</h1>
-                <BtnIcon btnClassName="button--circle__l" iconName="ellipsis-vertical-outline" iconClass="icon-l"/>
+                <BtnIcon btnClassName="button--circle__l" iconName="close-outline" iconClass="icon-l" handleClick={() => onTimezoneDelete(timezone.city)}/>
             </div>
             <div className="timezone-tile__zone m-m">
                 <h3 className="f-text-l f-weight-xl m-0">{timezone.city}</h3>
@@ -52,7 +52,7 @@ const TimezoneTile = ({ timezone }) => {
                 </div>
                 <div>
                     {Object.values(timezone.people).map((person, index) => (
-                        <TimezoneTilePerson person={person}/>
+                        <TimezoneTilePerson person={person} key={index}/>
                     )) }
                 </div>
             </div>}
