@@ -38,7 +38,7 @@ const TimezoneTile = ({ timezone, onTimezoneDelete }) => {
             {!tileRemovalMode && <div>
                 <div className="timezone-tile__header d-flex d-flex__spacebetween">
                     <h1 className="f-header-big f-weight-m" style={{margin: 0}}>{calculateHour(timezone.timezoneCity)}</h1>
-                    <BtnIcon btnClassName="button--circle__l" iconName="close-outline" iconClass="icon-l" handleClick={() => setTileRemovalMode(true)}/>
+                    <BtnIcon btnClassName="button--circle__m" iconName="close-outline" iconClass="icon-l" handleClick={() => setTileRemovalMode(true)}/>
                 </div>
                 <div className="timezone-tile__zone m-m">
                     <h3 className="f-text-l f-weight-xl m-0">{timezone.city}</h3>
