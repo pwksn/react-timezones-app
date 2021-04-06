@@ -49,13 +49,12 @@ a {
 .btn {
 
     &__medium {
-        width: 20%;
+        min-width: 10rem;
         height: 4rem;
         font-size: 1.5rem;
         font-family: inherit;
         font-weight: 600;
         border-radius: 1rem;
-        min-width: 7rem;
 
         &--primary {
             background-color: $color-powder;

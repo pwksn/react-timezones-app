@@ -16,12 +16,11 @@ const Dashboard = () => {
     useEffect(() => {
         if (data && data.timezones) {
             setTimezones(Object.values(data.timezones));
-            console.log(timezones);
         }
     }, [data]);
 
     useEffect(() => {
-        // toDo: check if interval needed
+        // interval to update current hour every 1 second
         const timer = setInterval(() => {
             setTimeNow(spacetime.now().time());
         }, 1000);
