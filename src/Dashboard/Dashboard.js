@@ -4,12 +4,14 @@ import useFetch from '../hooks/useFetch';
 import { useEffect, useState } from "react";
 import spacetime from 'spacetime';
 import LoadingSpinner from "../Components/LoadingSpinner";
+import TimezoneDetails from "../Views/TimezoneDetails";
 
 const Dashboard = () => {
 
     const {data, isPending, error} = useFetch('https://react-timezones-app-default-rtdb.firebaseio.com/123.json');
     const [timeNow, setTimeNow] = useState(spacetime.now().time()); 
     const [timezones, setTimezones] = useState(null);
+    const [selectedTimezone, setSelectedTimezone] = useState('');
 
     const d = spacetime.now();
 
@@ -39,17 +41,26 @@ const Dashboard = () => {
         })
     }
 
+    const handleTileClick = (timezoneCity) => {
+        console.log(timezoneCity);
+        const timezone = timezones.filter(timezone => (
+            timezone.city === timezoneCity
+        ));
+        setSelectedTimezone(timezone[0]);
+    }
+
     return (
         <div className="app__dashboard">
             {data && <DashboardHeader userData={data.user} timeNow={d.time()} offset={d.offset()}/>}
-            {timezones && <div className="tiles">
+            {timezones && !selectedTimezone && <div className="tiles">
                 {timezones.map((timezone, index) => (
-                    <TimezoneTile key={index} timezone={timezone} onTimezoneDelete={onTimezoneDelete}/>
+                    <TimezoneTile key={index} timezone={timezone} onTimezoneDelete={onTimezoneDelete} handleTileClick={handleTileClick}/>
                 ))}
             </div>}
             {isPending && <div style={{width: '100%', height: '100%', gridRow: '2/3'}} className="d-flex d-flex__center" >
                 <LoadingSpinner />    
             </div>}
+            {selectedTimezone && <TimezoneDetails timezone={selectedTimezone} handleClick={() => setSelectedTimezone('')}/>}
         </div>
     );
 }

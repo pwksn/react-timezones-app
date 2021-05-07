@@ -3,7 +3,7 @@ import TimezoneTilePerson from "./TimezoneTilePerson"
 import spacetime from 'spacetime';
 import { useEffect, useState } from "react";
 
-const TimezoneTile = ({ timezone, onTimezoneDelete }) => {
+const TimezoneTile = ({ timezone, onTimezoneDelete, handleTileClick }) => {
 
     const [tileRemovalMode, setTileRemovalMode] = useState(false);
     const d = spacetime.now();
@@ -47,8 +47,8 @@ const TimezoneTile = ({ timezone, onTimezoneDelete }) => {
                 {timezone.people && <div className="timezone-tile__people m-l" style={{marginBottom: 0}}>
                     <div className="d-flex d-flex__spacebetween">
                         <h4 className="f-text-m f-weight-xl m-m">People <span>({calculatePeopleNumber()})</span></h4>
-                        <button className="d-flex d-flex__center">
-                            <p className="f-text-s f-weight-xl m-m" style={{marginRight: '1rem'}}>View all</p>
+                        <button className="d-flex d-flex__center" onClick={() => handleTileClick(timezone.city)}>
+                            <p className="f-text-s f-weight-xl m-m" style={{marginRight: '1rem'}}>Details</p>
                             <ion-icon name="arrow-forward-outline"></ion-icon>
                         </button>
                     </div>
