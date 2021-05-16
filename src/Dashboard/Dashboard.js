@@ -12,7 +12,7 @@ const Dashboard = () => {
     const [timeNow, setTimeNow] = useState(spacetime.now().time()); 
     const [timezones, setTimezones] = useState(null);
     const [selectedTimezone, setSelectedTimezone] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const d = spacetime.now();
 
     useEffect(() => {
@@ -31,6 +31,7 @@ const Dashboard = () => {
 
     const onTimezoneDelete = (timezoneName) => {
         const timezoneNameFormatted = timezoneName.replace(/\s+/g, '_'); // eg. Sao Paulo -> Sao_Paulo to use in URL
+        setLoading(true);
         fetch('https://react-timezones-app-default-rtdb.firebaseio.com/123/timezones/' + timezoneNameFormatted + '.json', {
             method: 'DELETE'
         }).then(() => {
@@ -38,6 +39,7 @@ const Dashboard = () => {
                 timezone.city !== timezoneName
             ));
             setTimezones(newTimezones);
+            setLoading(false);
         })
     }
 
@@ -52,12 +54,12 @@ const Dashboard = () => {
     return (
         <div className="app__dashboard">
             {data && <DashboardHeader userData={data.user} timeNow={d.time()} offset={d.offset()}/>}
-            {timezones && !selectedTimezone && <div className="tiles">
+            {timezones && !selectedTimezone && !loading  && <div className="tiles">
                 {timezones.map((timezone, index) => (
                     <TimezoneTile key={index} timezone={timezone} onTimezoneDelete={onTimezoneDelete} handleTileClick={handleTileClick}/>
                 ))}
             </div>}
-            {isPending && <div style={{width: '100%', height: '100%', gridRow: '2/3'}} className="d-flex d-flex__center" >
+            {(isPending || loading) && <div style={{width: '100%', height: '100%', gridRow: '2/3'}} className="d-flex d-flex__center" >
                 <LoadingSpinner />    
             </div>}
             {selectedTimezone && <TimezoneDetails timezone={selectedTimezone} handleClick={() => setSelectedTimezone('')}/>}

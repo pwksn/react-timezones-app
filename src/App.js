@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import useFetch from './hooks/useFetch';
 import TimezoneForm from './Forms/TimezoneForm';
 import PersonForm from './Forms/PersonForm';
+import TimezoneFinder from './Views/TimezoneFinder';
 
 function App() {
 
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route path="/form/person">
               {data && <PersonForm timezones={data.timezones}/>}
+            </Route>
+            <Route path="/search">
+              <TimezoneFinder />
             </Route>
           </Switch>
         </div>

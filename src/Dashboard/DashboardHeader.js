@@ -1,4 +1,3 @@
-import { useState } from "react";
 import BtnIcon from "../Components/BtnIcon";
 import { Link } from 'react-router-dom';
 
@@ -19,9 +18,11 @@ const DashboardHeader = ({ userData, timeNow, offset }) => {
     return (
         <div className="dashboard-header-box">
             <div className="d-flex d-flex__spacebetween">
-                <h1 className="f-weight-m f-header-big" style={{margin: "1rem 0"}}>Hey <span className="f-weight-xl">{userData.name}</span> &#128075;</h1>
+                <h1 className="f-weight-m f-header-big" style={{marginBottom: "1rem"}}>Hey <span className="f-weight-xl">{userData.name}</span> &#128075;</h1>
                 <div className="d-flex d-flex__center">
-                    <BtnIcon btnClassName="button--circle__l" iconName="search-outline" iconClass="icon-l" handleClick={handleSearchBtn}/>
+                    <Link to="/search">
+                        <BtnIcon btnClassName="button--circle__l" iconName="search-outline" iconClass="icon-l" handleClick={handleSearchBtn}/>
+                    </Link>
                     <BtnIcon btnClassName="button--circle__l" iconName="options-outline" iconClass="icon-l"/>
                     <Link to="/form/select">
                         <BtnIcon btnClassName="button--circle__l" iconName="add-circle-outline" iconClass="icon-l"/>

@@ -33,6 +33,11 @@ const TimezoneTile = ({ timezone, onTimezoneDelete, handleTileClick }) => {
         return Object.values(timezone.people).length;
     }
 
+    const handleTileRemoval = (city) => {
+        onTimezoneDelete(city);
+        setTileRemovalMode(false);
+    }
+
     return (
         <div className="timezone-tile">
             {!tileRemovalMode && <div>
@@ -60,12 +65,12 @@ const TimezoneTile = ({ timezone, onTimezoneDelete, handleTileClick }) => {
                 </div>}
             </div>}
             {tileRemovalMode && <div className="d-flex d-flex__column d-flex__center">
-                <h2>Remove timezone?</h2>
+                <h2>Remove timezone {timezone.city}?</h2>
                 <div>
                     <button 
                         className="btn__medium btn__medium--secondary" 
                         style={{marginRight: '1rem'}}
-                        onClick={() => onTimezoneDelete(timezone.city)}>
+                        onClick={() => handleTileRemoval(timezone.city)}>
                         Remove
                     </button>
                     <button
